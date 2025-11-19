@@ -1,58 +1,275 @@
-/* Background and layout for the scroll section */
-.scroll-section {
-  display: flex;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: #faf5ef;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+/* ========================================================= */
+/*                        BASE STYLES                        */
+/* ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* Each card */
-.card {
-  position: relative;
-  flex: 0 0 260px;
-  border-radius: 1rem;
-  overflow: hidden;
-  scroll-snap-align: start;
-}
-
-/* Image inside the card */
-.card img {
+html,
+body {
   width: 100%;
-  height: 320px;
-  object-fit: cover;
-  filter: brightness(0.8);
-  transition: transform 0.3s ease;
+  height: 100%;
 }
 
-/* Hover zoom effect */
-.card:hover img {
-  transform: scale(1.05);
+body {
+  margin: 0;
+  font-family: 'Lora', serif;
 }
 
-/* Text overlay */
-.card h3 {
+/* ========================================================= */
+/*                       HERO SECTION                        */
+/*   This controls the entire visible area at the top.       */
+/*   Change height, padding, spacing, overlay darkness here. */
+/* ========================================================= */
+
+.hero {
+  position: relative; /* allows video + overlay to be positioned inside */
+  width: 100vw; /* full width of browser */
+  height: 667px; /* matches provided artboard height */
+  overflow: hidden; /* hides video edges when cropping */
+
+  display: flex; /* centers content horizontally + vertically */
+  align-items: center; /* vertically centre hero text */
+  justify-content: center; /* horizontally centre hero text */
+}
+
+/* ========================================================= */
+/*                      BACKGROUND VIDEO                     */
+/*   Fills entire hero area and crops to maintain coverage.  */
+/* ========================================================= */
+
+.hero-video {
+  position: absolute; /* sits behind text */
+  top: 0;
+  left: 0;
+  width: 100%; /* always fills width */
+  height: 100%; /* always fills height */
+  object-fit: cover; /* <<< IMPORTANT: ensures video covers the section without distortion */
+  z-index: 1; /* below overlay + text */
+}
+
+/* ========================================================= */
+/*                        DARK OVERLAY                       */
+/*   Makes the text readable by darkening the background.    */
+/*   Adjust TRANSPARENCY here.                               */
+/* ========================================================= */
+
+.hero-overlay {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  color: white;
-  font-size: 1.3rem;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.6);
+  /*        ↑   ↑   ↑   ↑
+    RED  GREEN BLUE ALPHA (opacity)
+    To make darker: increase to 0.6
+    To make lighter: reduce to 0.25  
+  */
+
+  z-index: 2; /* sits above video, below text */
 }
 
-/* Small green arrow in bottom-right corner */
-.arrow {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  background: #00e676;
-  color: #172a3a;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
+/* ========================================================= */
+/*                        HERO CONTENT                       */
+/*   This contains the <h1> text.                            */
+/*   Modify text alignment + spacing here.                   */
+/* ========================================================= */
+
+.hero-content {
+  position: relative;
+  z-index: 3; /* highest layer — sits above video + overlay */
+  text-align: center; /* centre the heading */
+  padding: 0 20px; /* left/right breathing room on small screens */
+}
+
+/* ========================================================= */
+/*                           HEADLINE                        */
+/*   Edit the text size, spacing, and line-height here.      */
+/* ========================================================= */
+
+.hero h1 {
+  color: #fff; /* text colour */
+  font-family: 'Lora', serif;
+  font-size: 4rem; /* 64px */
+  line-height: 1.2; /* space between lines */
+  font-weight: 400; /* Lora regular */
+}
+
+/* ========================================================= */
+/*                    TABLET ADJUSTMENTS                     */
+/* ========================================================= */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .hero {
+    min-width: 768px;
+    height: 335px;
+  }
+
+  .hero h1 {
+    font-size: 2rem; /* 32px */
+    text-align: center;
+  }
+}
+
+/* ========================================================= */
+/*                     MOBILE ADJUSTMENTS                    */
+/* ========================================================= */
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .hero {
+    min-width: 375px;
+    height: 195px;
+  }
+
+  .hero-content {
+    width: 163px;
+    height: 78px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 1.25rem; /* 20px */
+    text-align: center;
+  }
+}
+
+/* ========================================================= */
+/*                   OUR HISTORY SECTION                     */
+/*    Desktop frame: 1440 x 664                              */
+/* ========================================================= */
+
+.history {
+  background: #cbd5c0; /* background colour from your Figma */
+  width: 100%; /* fully span width of screen */
+  display: flex; /* center contents vertically */
   justify-content: center;
-  font-weight: bold;
+  padding: 80px 20px; /* creates vertical breathing room */
+}
+
+/* --------------------------------------------------------- */
+/* Outer container (matches your design proportions)         */
+/* --------------------------------------------------------- */
+
+.history-container {
+  width: 100%;
+  max-width: 1440px; /* your exact desktop frame width */
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------- */
+/* History Heading (H1 equivalent in this section)           */
+/* Figma text box = 789 x 81, Lora Regular, 64px             */
+/* --------------------------------------------------------- */
+
+.history-title {
+  font-family: 'Lora', serif;
+  font-size: 64px; /* exact from Figma */
+  font-weight: 400; /* Lora Regular */
+  margin: 0 auto 40px; /* spacing below heading */
+  max-width: 789px; /* exact Figma width */
+  line-height: 1.1;
+}
+
+/* --------------------------------------------------------- */
+/* Paragraph text block                                      */
+/* Text box = 1004 x 345, 24px Lora Regular                  */
+/* --------------------------------------------------------- */
+
+.history-text {
+  font-family: 'Lora', serif;
+  font-size: 24px; /* exact Figma size */
+  font-weight: 400;
+  max-width: 1004px; /* exact text-container width */
+  line-height: 1.5; /* readable line spacing */
+  margin: 0 auto; /* center horizontally */
+  color: #333; /* better contrast on light bg */
+}
+
+/* ========================================================= */
+/*                     OUR FOOD SECTION                      */
+/* ========================================================= */
+
+.food-section {
+  background: #dfe6da; /* your Figma background */
+  width: 100%;
+  padding: 60px 20px; /* vertical breathing space */
+  display: flex;
+  justify-content: center;
+}
+
+.food-container {
+  width: 100%;
+  max-width: 1440px; /* exact Figma container width */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* --------------------------------------------------------- */
+/* LEFT COLUMN — IMAGE GRID                                  */
+/* 4 images, each exactly 282 x 243                          */
+/* --------------------------------------------------------- */
+
+.food-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 32px; /* spacing between images */
+  width: 600px; /* visually matches grid column width */
+}
+
+.food-img {
+  width: 282px; /* exact Figma dimensions */
+  height: 243px;
+  object-fit: cover;
+  border-radius: 6px; /* optional */
+  background: #cbd5c0; /* fallback colour */
+}
+
+/* --------------------------------------------------------- */
+/* RIGHT COLUMN — TEXT                                        */
+/* H2 box = 486 x 101                                         */
+/* Paragraph box = 486 x 405                                  */
+/* --------------------------------------------------------- */
+
+.food-text-column {
+  width: 486px; /* exact Figma width */
+  text-align: center;
+}
+
+.food-title {
+  background: #cbd5c0; /* Figma block colour */
+  width: 100%;
+  height: 101px; /* exact */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Lora', serif;
+  font-size: 64px; /* exact Figma size */
+  font-weight: 400;
+  color: black;
+  margin-bottom: 24px;
+}
+
+.food-description {
+  background: #cbd5c0; /* Figma background */
+  width: 100%;
+  height: 405px; /* exact Figma height */
+  padding: 30px;
+  overflow: hidden; /* prevents overflow due to fixed height */
+
+  font-family: 'Lora', serif;
+  font-size: 24px;
+  line-height: 1.5;
+  color: black;
 }

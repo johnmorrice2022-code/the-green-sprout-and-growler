@@ -1,58 +1,137 @@
-/* Background and layout for the scroll section */
-.scroll-section {
-  display: flex;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: #faf5ef;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-}
+<!-- ============================================ -->
+<!--                 HERO SECTION                 -->
+<!--  This section contains:                      -->
+<!--   - A full-width looping video background     -->
+<!--   - A dark overlay for readability            -->
+<!--   - Centre-aligned headline text              -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-/* Each card */
-.card {
-  position: relative;
-  flex: 0 0 260px;
-  border-radius: 1rem;
-  overflow: hidden;
-  scroll-snap-align: start;
-}
+    <!-- Google Font for hero text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400&display=swap"
+      rel="stylesheet"
+    />
 
-/* Image inside the card */
-.card img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  filter: brightness(0.8);
-  transition: transform 0.3s ease;
-}
+    <!-- Link to the CSS file for testing -->
+    <link rel="stylesheet" href="growler.css" />
 
-/* Hover zoom effect */
-.card:hover img {
-  transform: scale(1.05);
-}
+    <title>Growler Test Page</title>
+  </head>
+  <body>
+    <section class="hero">
+      <!-- 
+    HERO VIDEO 
+    This <video> element fills the entire hero section.  
+    - autoplay: starts automatically  
+    - muted: required by browsers for autoplay  
+    - loop: restarts automatically when it ends  
+    - playsinline: prevents full-screen mode on mobile  
+  -->
+      <video class="hero-video" autoplay muted loop playsinline>
+        <!-- 
+      The <source> tells the browser where the video file is. 
+      You can replace the filename with your actual asset.
+    -->
+        <source src="gsimages/hero-video.mp4" type="video/mp4" />
+      </video>
 
-/* Text overlay */
-.card h3 {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  color: white;
-  font-size: 1.3rem;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-}
+      <!-- 
+    HERO OVERLAY 
+    A semi-transparent dark layer placed on top of the video  
+    so the text is readable. 
+  -->
+      <div class="hero-overlay"></div>
 
-/* Small green arrow in bottom-right corner */
-.arrow {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  background: #00e676;
-  color: #172a3a;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
+      <!-- 
+    HERO CONTENT 
+    This wrapper holds your headline text.  
+    It sits ABOVE the video and overlay because we give it  
+    a higher z-index (set in CSS).  
+    Text is centered with CSS.
+  -->
+      <div class="hero-content">
+        <!-- Your hero headline text -->
+        <h1>
+          Welcome to The Green<br />
+          Sprout and Growler
+        </h1>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- ===================================================== -->
+<!--                   OUR HISTORY SECTION                 -->
+<!--   Desktop frame: 1440 x 664                           -->
+<!--   Centered heading + centered paragraph               -->
+<!-- ===================================================== -->
+
+<section class="history">
+  <!-- Outer container (matches your 1440px frame) -->
+  <div class="history-container">
+    <!-- Heading block -->
+    <h2 class="history-title">Our History</h2>
+
+    <!-- Paragraph block -->
+    <p class="history-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo,
+      felis vitae cursus hendrerit, odio libero mattis orci, sit amet
+      condimentum erat lorem vel sem. Sed luctus eros vel sagittis tempor.
+      Curabitur vel enim sed arcu dignissim dictum. Aenean bibendum purus
+      euismod neque sodales, a fermentum nulla euismod. Suspendisse et mi vel
+      erat varius imperdiet. Integer sed tincidunt est. Cras sed leo vitae ipsum
+      pellentesque efficitur ut sit amet lacus. Mauris non elit eget libero
+      malesuada porta vitae ut nisi. Suspendisse potenti. Curabitur sodales urna
+      sed velit ultrices convallis. Suspendisse tempor dapibus justo, vitae
+      condimentum elit laoreet at.
+    </p>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!--                     OUR FOOD SECTION                  -->
+<!--   Desktop frame: 1440 x 664                           -->
+<!--   Left: Image grid (4 images)                         -->
+<!--   Right: Title + Text                                 -->
+<!-- ===================================================== -->
+
+<section class="food-section">
+  <div class="food-container">
+    <!-- ================= LEFT COLUMN (IMAGES) ================= -->
+    <div class="food-images">
+      <!-- Each image is 282 x 243, from your gsimages/Gallery folder -->
+      <img src="gsimages/Gallery/3.png" alt="Food item" class="food-img" />
+      <img src="gsimages/Gallery/4.png" alt="Food item" class="food-img" />
+      <img src="gsimages/Gallery/5.png" alt="Food item" class="food-img" />
+      <img src="gsimages/Gallery/6.png" alt="Food item" class="food-img" />
+    </div>
+
+    <!-- ================= RIGHT COLUMN (TEXT) ================= -->
+    <div class="food-text-column">
+      <!-- Title block (486 x 101) -->
+      <h2 class="food-title">Our Food</h2>
+
+      <!-- Paragraph block (486 x 405) -->
+      <p class="food-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum
+        magna ac odio bibendum fermentum. Praesent dapibus mollis orci, et
+        luctus nisi aliquet vitae. Sed at massa vel justo aliquet scelerisque.
+        Vivamus vitae felis hendrerit, cursus lacus non, tincidunt nisl.
+        Phasellus ut mi vehicula, commodo ipsum at, congue dui. Integer
+        facilisis velit et libero sollicitudin, ac congue nisi interdum.
+        Pellentesque et volutpat orci, ut fermentum purus. Cras id nibh vitae
+        urna facilisis vulputate. Vestibulum ante ipsum primis in faucibus orci
+        luctus et ultrices posuere cubilia curae; Integer egestas leo in justo
+        laoreet, eget sodales nisi tempus. Mauris faucibus porta ante, sed
+        luctus lacus eleifend vel.
+      </p>
+    </div>
+  </div>
+</section>
