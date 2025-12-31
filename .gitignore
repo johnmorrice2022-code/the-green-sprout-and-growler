@@ -12,3 +12,6 @@ node_modules/
 
 # Zip exports
 *.zip
+
+# macOS
+.DS_Store
