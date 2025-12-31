@@ -199,7 +199,7 @@ body {
 /* ========================================================= */
 
 .food-section {
-  background: #dfe6da; /* your Figma background */
+  background: #cbd5c0; /* your Figma background */
   width: 100%;
   padding: 60px 20px; /* vertical breathing space */
   display: flex;
@@ -210,8 +210,9 @@ body {
   width: 100%;
   max-width: 1440px; /* exact Figma container width */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
+  gap: 80px;
 }
 
 /* --------------------------------------------------------- */
@@ -253,23 +254,123 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 6px;
 
   font-family: 'Lora', serif;
   font-size: 64px; /* exact Figma size */
   font-weight: 400;
   color: black;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 
 .food-description {
   background: #cbd5c0; /* Figma background */
   width: 100%;
-  height: 405px; /* exact Figma height */
+  height: 393px; /* 101 + 24 + 393 = 518 to match image grid height */
   padding: 30px;
-  overflow: hidden; /* prevents overflow due to fixed height */
+  overflow: auto; /* enables scroll when text exceeds fixed height */
+  border-radius: 6px;
+  margin: 0;
 
   font-family: 'Lora', serif;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.5;
   color: black;
+}
+
+/* ========================================================= */
+/*               FOOD SECTION RESPONSIVENESS                */
+/* ========================================================= */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .food-section {
+    padding: 50px 24px;
+  }
+
+  .food-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .food-images {
+    order: 2;
+    width: 100%;
+    max-width: 600px;
+    gap: 24px;
+    align-self: center;
+  }
+
+  .food-text-column {
+    display: contents;
+  }
+
+  .food-title {
+    order: 1;
+    font-size: 48px;
+    height: auto;
+    padding: 16px 12px;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+
+  .food-description {
+    order: 3;
+    min-height: 0;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .food-section {
+    padding: 40px 20px;
+  }
+
+  .food-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .food-images {
+    order: 2;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 320px;
+    gap: 20px;
+    align-self: center;
+  }
+
+  .food-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 282 / 243;
+  }
+
+  .food-text-column {
+    display: contents;
+  }
+
+  .food-title {
+    order: 1;
+    font-size: 36px;
+    height: auto;
+    padding: 14px 10px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .food-description {
+    order: 3;
+    min-height: 0;
+    font-size: 18px;
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
 }
