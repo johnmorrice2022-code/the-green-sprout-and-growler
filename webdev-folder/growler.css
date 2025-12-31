@@ -249,48 +249,32 @@ body {
 }
 
 .food-title {
-  background: #cbd5c0; /* Figma block colour */
+  background: #dfe6da; /* Figma block colour */
   width: 100%;
   height: 101px; /* exact */
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  border-radius: 6px;
-=======
   border-radius: 6px; /* match food image radius */
->>>>>>> 52185ae (Modified front page)
 
   font-family: 'Lora', serif;
   font-size: 64px; /* exact Figma size */
   font-weight: 400;
   color: black;
-<<<<<<< HEAD
-  margin: 0 0 24px;
-=======
   margin: 0 0 24px 0;
->>>>>>> 52185ae (Modified front page)
 }
 
 .food-description {
-  background: #cbd5c0; /* Figma background */
+  background: #dfe6da; /* Figma background */
   width: 100%;
-<<<<<<< HEAD
-  height: 393px; /* 101 + 24 + 393 = 518 to match image grid height */
-  padding: 30px;
-  overflow: auto; /* enables scroll when text exceeds fixed height */
-  border-radius: 6px;
-  margin: 0;
-=======
   height: 393px; /* align total height with image column */
   padding: 30px;
   overflow-y: auto; /* allow vertical scroll when text exceeds height */
   overflow-x: hidden;
   border-radius: 6px; /* match food image radius */
->>>>>>> 52185ae (Modified front page)
 
   font-family: 'Lora', serif;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.5;
   color: black;
   margin: 0;
